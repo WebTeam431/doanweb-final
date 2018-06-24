@@ -1,0 +1,76 @@
+
+.headerbar{
+    margin-right: auto;
+    margin-left: auto;
+    width: 1180px;
+}
+
+.leftside{
+    margin-top: 30px;
+}
+
+.actionButton{
+	display: block;
+	height: 50px;
+}
+
+
+.vertical-menu {
+    float: left;
+    width: 240px;
+}
+
+.vertical-menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc;
+}
+
+.vertical-menu a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.actionButton{
+    margin-top: 10px;
+    float: right;
+    margin-bottom: 5px;
+    height: 40px;
+}
+
+
+.product{
+    height: 200px;
+    margin-top: 30px;
+    padding: 10px;
+    clear: both;
+    overflow: auto;
+}
+
+.productImg{
+    float: left;
+    height: 180px;
+    width: auto;
+}
+
+.productInfo{
+    padding-left: 30px;
+    float: left;
+    width: 540px;
+}
+
+.product button{
+    float: right;
+    margin-top: 10px;
+}
+
+#moreButton{
+    margin-top: 20px;
+    margin-left: 300px;
+}

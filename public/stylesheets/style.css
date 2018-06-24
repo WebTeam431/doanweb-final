@@ -1,0 +1,211 @@
+
+body
+{
+	background-color: white;
+	font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.morebutton{
+	clear: both;
+	margin: 30px;
+}
+
+#container
+{
+	width: 1200px;
+	background-color: white;
+	margin: auto;
+	font-size: 15px;
+}
+
+#header
+{
+	width: 1200px;
+	height: 80px;
+	background-color: white;
+}
+
+#logo
+{
+	float: left;
+	width: 240px;
+	height: 80px;
+	background-color: #4CAF50;
+	margin-right: 10px;
+}
+
+#panel
+{
+	float: left;
+	width: 600px;
+	height: 80px;
+	background-color: #3b68b5;
+	display: block;
+}
+
+.headerElement
+{
+	float: left;
+	margin: 30px 20px;
+	text-decoration: none;
+}
+
+
+#leftside
+{
+	padding-top: 30px;
+	float: left;
+	width: 240px;
+}
+
+.MenuItem
+{
+	text-decoration: none;
+	display: block;
+	padding: 20px 16px;
+	text-align: left;
+	font-size: 18px;
+	color: #606060;
+	font-weight: bold;
+	font-family: "Roboto", sans-serif;
+}
+
+.MenuItem:visited
+{
+	background-color: #E0E0E0;
+}
+
+.MenuItem:hover
+{
+	background-color: #A0A0A0;
+}
+
+#rightside
+{
+	width: 960px;
+	float: left;
+	display: block;
+	padding-bottom: 50px;
+}
+
+
+.product
+{
+	margin: 10px 10px;
+	width: 220px;
+	height: 300px;
+	float: left;
+	display: block;
+}
+
+.productLink
+{
+	text-decoration: none;
+	color: black;
+	font-size: 15px;
+}
+
+.productImg
+{
+	width: 220px;
+	height: 240px;
+	display: block;
+}
+
+.productTitle
+{
+	text-align: left;
+	color: #424242;
+	height: 36px;
+	position: relative;
+}
+
+.productPrice
+{
+	color: #3b68b5;
+	text-align: left;
+	font-size: 18px;
+	font-family: Roboto-Regular, sans-serif;
+	margin-bottom: 8px;
+}
+
+#getButton
+{
+	float: left;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 5px;
+    cursor: pointer;
+    clear: both;
+}
+
+#buyform{
+	clear: both;
+	float: right;
+}
+
+#footer
+{
+	clear: both;
+	background-color: #404040;
+	height: 160px;
+	color: white;
+	margin: 50px;
+}
+
+#contact
+{
+	width: 240px;
+	float: left;
+}
+
+#about
+{
+	float: left;
+	width: 560px;
+}
+
+#subcribeUs
+{
+	float: left;
+}
+
+
+#productImg
+{
+	width: 300px;
+	height: 300px;
+	display: block;
+	float: left;	
+}
+
+#productBasicInfo
+{
+	float: left;
+	text-align: left;
+	width: 660px;
+}
+
+#productName
+{
+	color: #FF8000;
+	font-size: 20px;
+}
+
+#productPrice
+{
+	color: #3b68b5;
+	font-size: 24px;
+}
+#productInfo
+{
+	font-size: 15px;
+}
+
+#Info{
+	float: left;
+}
