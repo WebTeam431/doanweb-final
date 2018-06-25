@@ -1,0 +1,62 @@
+<%var username%>
+<%var title%>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title? title : ''%></title>
+	<meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<script>
+		function checkUser(){
+			if(typeof(Storage) !== "undefined"){
+				if(localStorage.username){
+					var cartlink = "/cart?userid=" + localStorage.userid
+					document.getElementById("UserName").innerHTML = localStorage.username;
+					document.getElementById("logout").style.display = "block"
+					document.getElementById("Cart").innerHTML = "Giỏ hàng"
+					document.getElementById("Cart").setAttribute("href", cartlink)
+					document.getElementById("logout").innerHTML = "Đăng xuất"
+					var userlink
+					if(localStorage.isadmin == 0){
+						userlink = "/profile?userid=" + localStorage.userid
+					}
+					else{
+						userlink = "/admin"
+					}
+					document.getElementById("UserName").setAttribute("href", userlink)
+				}
+				else {
+					document.getElementById("logout").style.display = "none"
+					document.getElementById("Cart").innerHTML = "Đăng ký"
+					document.getElementById("Cart").setAttribute("href", "/register")
+					document.getElementById("UserName").innerHTML = "Đăng nhập";
+					document.getElementById("UserName").setAttribute("href", "/login")
+				}
+			}
+			else{
+
+			}
+		}
+	</script>
+</head>
+<body onload="checkUser()">
+	<div id="container" align="center">
+		<div id="header">
+			<a href="/"><img src="" id="logo" alt="Logo"></a>
+			<img src="" id="panel" alt="HeaderPanel">
+			<a href="" class="headerElement" id="UserName"></a>
+			<a href="" class="headerElement" id="Cart"></a>
+			<a href="/" class="headerElement" id="logout" onclick="logout()"></a>
+		</div>
+		<div id="leftside">
+			<a href="/screen" class="MenuItem">Màn hình</a>
+			<a href="/cpu" class="MenuItem">CPU</a>
+			<a href="/mouse" class="MenuItem">Chuột</a>
+			<a href="/keyboard" class="MenuItem">Bàn phím</a>	
+		</div>
