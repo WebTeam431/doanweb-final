@@ -1,0 +1,30 @@
+<% include header%>
+
+<div id="rightside">
+<% 
+	var data = products
+	if(data){
+		var i = 0
+		for (startId, i; startId < data.length; startId++, i++) {
+			if (i < 12){%>
+			<div class="product">
+				<a href="productview?key=<%= data[startId].MASP%>" class="productLink">
+					<img src="<%= data[startId].HINHANHSP%>" class="productImg" alt="productImg">
+					<div class="productMeta">
+						<div class="productTitle"><%= data[startId].TENSP%></div>
+						<div class="productPrice"><%= data[startId].GIASP%></div>
+					</div>
+				</a>
+			</div>
+			<%}else {
+				break;
+			}
+		}			
+	}
+%>
+<%if(data.length > startId){%>
+<a href="/?startId=<%= startId%>"><button class="btn-lg btn-success morebutton">Xem thêm</button></a>
+<%}%>
+</div>
+
+<% include footer%>
