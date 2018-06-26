@@ -1,0 +1,27 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+
+</head>
+<body style="margin-left: 400px">
+
+<div id="result"></div>
+<h3>Đăng nhập thành công!</h3>
+<br>
+<a href="/"><input type="button" id="getButton" name="backButton" value="Trở về"></a>
+<% if(isadmin == 1){%>
+<a href="/admin"><input type="button" id="getButton" name="adminButton" value="Admin panel"></a>
+<%}%>
+<script>
+	if (typeof(Storage) !== "undefined") {
+	    localStorage.setItem("username", "<%- username%>");
+	    localStorage.setItem("isadmin", "<%- isadmin%>");
+	    localStorage.setItem("userid", "<%- id%>")
+	    document.getElementById("result").innerHTML = localStorage.getItem("username");
+	} else {
+	    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+</script>
+
+</body>
+</html>

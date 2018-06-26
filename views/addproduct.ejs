@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script type="text/javascript">
+		if(typeof(Storage) !== "undefined"){
+			if(localStorage.username){
+				if(localStorage.isadmin == 0){
+					window.location = "/"
+				}
+			}
+		}
+	</script>
+  <title><%= title?title: ""%></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="assets/admin.css">
+</head>
+<body>
+
+<div class="container">
+		<div class="header">
+			
+		</div>
+
+		<div class="col-md-3">
+			<div class="list-group">
+				<a href="/admin" class="list-group-item active">Dashboard</a>
+				<a href="/editproducts" class="list-group-item">Danh sách sản phẩm</a>
+				<a href="#" class="list-group-item">Danh sách người dùng</a>
+			</div>
+		</div>
+	<div class="col-md-9">
+		<%if(title != "Xoá sản phẩm"){%>
+		<h2>Thêm sản phẩm</h2>           
+		<form action="/add" method="POST" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="tensp">Tên sản phẩm:</label>
+				<input type="text" class="form-control" id="tensp" name="tensp">
+			</div>
+			<div class="form-group">
+				<label for="loaisp">Loại sản phẩm:</label>
+				<input type="text" class="form-control" id="loaisp" name="loaisp">
+			</div>
+			<div class="form-group">
+				<label for="giasp">Giá sản phẩm</label>
+				<input type="text" class="form-control" id="giasp" name="giasp">
+			</div>
+			<div class="form-group">
+				<label for="motasp">Mô tả sản phẩm</label>
+				<textarea class="form-control" id="mota sp" name="motasp" rows="5"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="hinhanhsp">Chọn hình ảnh sản phẩm</label>
+				<input type="file" name="imagefile" accept="image/*">
+			</div>
+			<button type="submit" class="btn btn-success">Thêm</button>
+		</form>
+		<%}else{%>
+		<h3>Bạn có muốn xoá sản phẩm này?</h3>
+			<div class="product well">
+				<img src="<%- product.HINHANHSP%>" class="productImg" alt="productImg">
+				<div class="productInfo">
+					<h4 class="productName" style="color: #424242"><%- product.TENSP%></h4>
+					<h4 class="productPrice" style="color: #3b68b5"><%- product.GIASP%></h4>
+					<p class="productMoreInfo"><%- product.MOTASP%></p>
+				</div>
+			</div>	
+			<form action="/delete" method="POST">	
+			<input type="hidden" name="masp" value="<%= product.MASP%>">		
+			<button type="submit" class="btn btn-success actionButton">Đồng ý</button>
+			<a href="/admin"><button class="btn btn-danger actionButton">Huỷ</button></a>
+			</form>
+		<%}%>
+	</div>
+</div>
+
+</body>
+</html>

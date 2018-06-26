@@ -1,0 +1,57 @@
+<%include header%>
+<%var total = 0%>
+
+<div id="rightside" style="text-align: left;">
+	<div class="col-md-8">
+		<h2>Giỏ hàng của bạn</h2>
+	</div>
+	<div class="col-md-2"><h3>Số lượng</h3></div>
+	<div class="col-md-2"><h3>Thành tiền</h3></div>
+	<div class="col-md-12">
+	<%
+		if (data) {
+			for(var i =0; i < data.length; i++){%>
+				<div class="well" style="clear: both;    overflow: auto;">
+						<img class="col-md-2" src="<%- data[i].HINHANHSP%>">
+						<div class="col-md-6">
+							<h4 style="color: #424242"><%- data[i].TENSP%></h4>
+							<h4 style="color: #3b68b5"><%- data[i].GIASP%></h4>
+						</div>
+						<h4 class="col-md-2" style="padding-left: 60px;"><%= data[i].SOLUONG%></h4>
+						<h4 class="col-md-2" id="<%- i%>" style="text-align: right; color: #3b68b5"></h4>
+						<%total = total + data[i].SOTIEN%>
+				</div>
+			<%}
+
+		}
+	%>
+	</div>
+	<div class="col-md-12">
+		<hr>
+		<h3 class="col-md-6">Tổng cộng</h3>
+		<h3 class="col-md-6" id="total" style="text-align: right; padding-right: 30px; color: #3b68b5"></h3>
+	</div>
+	<button class="btn-lg btn-success" style="float: right; margin-right: 50px;">Thanh toán</button>
+
+</div>
+<script type="text/javascript">
+	document.getElementById("total").innerHTML = PriceToString(<%= total%>)
+	<%for(var i=0; i<data.length; i++){%>
+		document.getElementById("<%- i%>").innerHTML = PriceToString(<%= data[i].SOTIEN%>)
+	<%}%>
+	function PriceToString (price) {
+		var s = price.toString()
+		var i = s.length
+		while (s.charAt(i-3)) {
+			if (i-3 <= 0) {break;}
+			var temp1 = s.slice(0, i-3)
+			var temp2 = s.slice(i-3)
+			s = temp1.concat(".", temp2)
+			i = i-3
+		}
+		s = s.concat(" ₫")
+		return s;
+	}
+</script>
+
+<%include footer%>

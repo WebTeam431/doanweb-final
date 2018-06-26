@@ -1,0 +1,94 @@
+<%var products%>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+		if(typeof(Storage) !== "undefined"){
+			if(localStorage.username){
+				if(localStorage.isadmin == 0){
+					window.location = "/"
+				}
+			}
+		}
+	</script>
+	<title><%=title%></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="stylesheets/admin.css">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			
+		</div>
+
+		<div class="col-md-3">
+			<div class="list-group">
+				<a href="/admin" class="list-group-item active">Dashboard</a>
+				<a href="/editproducts" class="list-group-item">Danh sách sản phẩm</a>
+				<a href="#" class="list-group-item">Danh sách người dùng</a>
+			</div>
+		</div>
+		
+		<div class="col-md-9">
+		<% 
+			if(products != undefined){
+				var data = products
+				%>
+				<h2 style="float: left;">Danh sách sản phẩm</h2>
+				<a href="/addproduct"><button type="button" class="btn btn-success actionButton">Thêm sản phẩm</button></a>
+				<%
+				if(data){
+					var i = 0
+					for (i, startId; startId < data.length; i++, startId++) {
+						if (i < 12){%>
+						<div>
+							<div class="product well">
+								<img src="<%- data[startId].HINHANHSP%>" class="productImg" alt="productImg">
+								<div class="productInfo">
+									<h4 class="productName" style="color: #424242"><%- data[startId].TENSP%></h4>
+									<h4 class="productPrice" style="color: #3b68b5"><%- data[startId].GIASP%></h4>
+									<p class="productMoreInfo"><%- data[startId].MOTASP%></p>
+								</div>
+								<a href="/editproduct?key=<%= data[startId].MASP%>"><button class="btn btn-primary actionButton">Sửa</button></a>
+								<a href="/deleteproduct?key=<%= data[startId].MASP%>"><button class="btn btn-danger actionButton">Xoá</button></a>
+
+							</div>
+						</div>
+						<%}else {
+							break;
+						}
+
+					}			
+				}%>
+				<%if(startId < products.length){%>
+				<a href="/editproducts?startId=<%= startId%>"><button class="btn-lg btn-success">Xem thêm</button></a>
+				<%}%>
+			<%}
+			else{%>
+				<h2>Welcome to admin dashboard</h2>
+			<%}
+		%>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function checkAdmin(){
+			if(typeof(Storage) !== "undefined"){
+				if(localStorage.username){
+					if(localStorage.isadmin == 0){
+						window.location = "/"
+					}
+				}
+			}
+		}
+	</script>
+</body>
+</html>

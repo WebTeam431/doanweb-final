@@ -1,0 +1,77 @@
+<%include header%>
+
+<div id="rightside">
+	<h2>Thông tin cá nhân</h2>
+	<form class="form-horizontal" method="POST" action="/profileedit?userid=<%= data.USERID%>">
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="email">Họ tên:</label>
+			<div class="col-sm-6">
+			<input type="text" class="form-control" id="username" name="hoten" value="<%= data.USERNAME%>" disabled>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="email">Email đăng nhập:</label>
+			<div class="col-sm-6">
+			<input type="email" class="form-control" id="email" name="email" value="<%= data.EMAIL%>" disabled>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="password">Mật khẩu:</label>
+			<div class="col-sm-6">
+			<input type="password" class="form-control" id="password" name="matkhau" value="<%= data.PASSWORD%>" disabled>
+			</div>
+			<div class="col-md-3">
+				<a href="" style="text-align: left;">Đổi mật khẩu</a>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="diachi">Địa chỉ:</label>
+			<div class="col-sm-6">
+			<input type="text" class="form-control" id="diachi" name="diachi" value="<%= data.DIACHI%>" disabled>
+			</div>			
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="sdt">Số điện thoại:</label>
+			<div class="col-sm-6">
+			<input type="text" class="form-control" id="sdt" name="sdt" value="<%= data.DIACHI%>" disabled>
+			</div>			
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="ngaysinh">Ngày sinh</label>
+			<div class="col-sm-6">
+				<input type="date" class="form-control" name="ngaysinh" id="ngaysinh" value="<%= data.NGAYSINH%>" disabled>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="gioitinh">Giới tính:</label>
+			<div class="col-sm-6">
+			<div class="radio" style="float: left; margin-left: 10px;">
+				<label><input id="radio1" type="radio" name="optradio" value="Male" <%if (!data.GIOITINH) {%>checked="true"<%}%> disabled>Nam</label>
+			</div>
+			<div class="radio" style="float: left; margin-left: 10px;">
+				<label><input id="radio2" type="radio" name="optradio" value="Female" <%if (data.GIOITINH) {%>checked="true"<%}%> disabled>Nữ</label>
+			</div>
+			</div>			
+		</div>
+		<input type="submit" name="submitButton" id="submitButton" class="btn btn-success" value="Đồng ý">
+	</form>
+	<button class="btn" id="Editbutton" onclick="edit()">Chỉnh sửa</button>
+</div>
+
+<script type="text/javascript">
+	document.getElementById("submitButton").style.display = "none"
+	function edit () {
+		document.getElementById("username").disabled = false;
+		document.getElementById("ngaysinh").disabled = false;
+		document.getElementById("diachi").disabled = false;
+		document.getElementById("sdt").disabled = false;
+		document.getElementById("radio1").disabled = false;
+		document.getElementById("radio2").disabled = false;
+		document.getElementById("submitButton").style.display = "block"
+		document.getElementById("Editbutton").style.display = "none"
+		localStorage.setItem("username", document.getElementById("username").value)
+	}
+</script>
+
+
+<%include footer%>

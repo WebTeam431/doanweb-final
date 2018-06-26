@@ -1,0 +1,51 @@
+<% include header%>
+<%var message%>
+<div id="rightside">
+	<img id="productImg" src="<%= product.HINHANHSP%>" alt="product image">
+	<div id="productBasicInfo">
+		<p id="productName"><%= product.TENSP%></p>
+		<div id="Info">
+			<div class="col-md-8">
+				<p id="productPrice"><%= product.GIASP%></p>
+				<br>
+				<p id="productInfo"><%- product.MOTASP%></p>
+			</div>
+			<div class="col-md-4">
+				<input type="button" id="getButton" class="btn btn-success" name="getButton" value="MUA NGAY" onclick="buyProduct()">
+				<div id="buyform">
+					<form id="form" method="POST" action="/addtocart?productid=<%= product.MASP%>">
+						<div class="form-group">
+							<label for="soluong">Số lượng</label>
+							<input type="hidden" id="userid" name="userid" value="">
+							<input type="number" class="form-control" name="soluong" min="1" value="1">
+						</div>
+						<input type="submit" class="btn btn-success" name="" value="Thêm vào giỏ">
+					</form>
+					<br>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="relateProduct">
+	
+</div>
+
+<script type="text/javascript">
+	document.getElementById('buyform').style.display = "none";
+	//var cartlink = "/cart?userid=" + localStorage.userid;
+	document.getElementById("userid").setAttribute("value", localStorage.userid)
+	document.getElementById("tocart").setAttribute("href", "/cart?userid="+ localStorage.userid)
+	function buyProduct () {
+	    var x = document.getElementById('buyform');
+	    if (x.style.display === 'none') {
+	        x.style.display = 'block';
+	    } else {
+	        x.style.display = 'none';
+	    }
+	}
+
+</script>
+
+<% include footer%>
