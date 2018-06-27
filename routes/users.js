@@ -92,10 +92,17 @@ exports.addtoCart = function(req, res, next){
 	var userid = req.body.userid
 	var productid = req.query.productid
 	var soluong = req.body.soluong
+	console.log("CHECK:")
 	console.log(userid);
 	console.log(productid)
 	console.log(soluong);
+	if(userid == -1){
+		console.log("MUST LOGIN")
+		res.redirect('/login')
+	}else {
+		console.log("OK")
 	cart.addtoCart(userid, productid, soluong)
 	var redirectlink = "/productview?key=" + productid
-	res.redirect(redirectlink)
+	res.redirect(redirectlink)		
+	}
 }
