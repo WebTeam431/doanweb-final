@@ -76,21 +76,23 @@ exports.addtoCart = function addtoCart(userid, productid, soluong){
 			break;
 		}
 	}
-	//Them don hang
-	var query = "insert into `donhang` (`IDGIOHANG`, `IDSANPHAM`, `SOLUONG`, `SOTIEN`) values (" + idgiohang +", "+ productid + ", "+ soluong +", "+ sotien +")"
-	console.log(query)
-	sqlConn.query(query, function(error, results, fields){
-		if(error){throw error}else {
-			refreshDonHang()
-		}
-	})
-	//Cap nhap gio hang
-	var query = "UPDATE `giohang` SET `TONGCONG` = "+ tongcong +" WHERE `giohang`.`ID` = 22"
-	console.log(query)
-	sqlConn.query(query, function(error, results, fields){
-		if(error) throw error
-			refreshCart()
-	})
+	if (!Number.isNaN(idgiohang)) {
+		//Them don hang
+		var query = "insert into `donhang` (`IDGIOHANG`, `IDSANPHAM`, `SOLUONG`, `SOTIEN`) values (" + idgiohang +", "+ productid + ", "+ soluong +", "+ sotien +")"
+		console.log(query)
+		sqlConn.query(query, function(error, results, fields){
+			if(error){throw error}else {
+				refreshDonHang()
+			}
+		})
+		//Cap nhap gio hang
+		var query = "UPDATE `giohang` SET `TONGCONG` = "+ tongcong +" WHERE `giohang`.`ID` = 22"
+		console.log(query)
+		sqlConn.query(query, function(error, results, fields){
+			if(error) throw error
+				refreshCart()
+		})
+	}
 }
 
 function StringToPrice(string){

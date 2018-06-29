@@ -2,6 +2,7 @@ var user = require('../models/user')
 var cart = require('../models/cart.js')
 
 
+
 exports.register = function(req, res, next){
 	res.render('register')
 }
@@ -12,7 +13,7 @@ exports.registercheck = function(req, res, next){
 	var email = req.body.email;
 	var pass = req.body.pwd
 
-	var create = user.create(name, email, pass)
+	var create = user.create(name, email, pass, null, null, null)
 
 	res.render('login')
 }
@@ -31,6 +32,7 @@ exports.logincheck = function(req, res, next){
 	{
 		var check = user.check(name, pass)
 		var username = check.username
+		console.log(check)
 		switch (check.isadmin) {
 			case 1:
 				res.render('redirect', {username: username, isadmin: 1, id: check.id})	

@@ -13,7 +13,7 @@
 			<div class="col-md-4">
 				<input type="button" id="getButton" class="btn btn-success" name="getButton" value="MUA NGAY" onclick="buyProduct()">
 				<div id="buyform">
-					<form id="form" method="POST" action="/addtocart?productid=<%= product.MASP%>">
+					<form id="buyform" method="POST" action="/addtocart?productid=<%= product.MASP%>">
 						<div class="form-group">
 							<label for="soluong">Số lượng</label>
 							<input type="hidden" id="userid" name="userid" value="">
@@ -35,7 +35,11 @@
 <script type="text/javascript">
 	document.getElementById('buyform').style.display = "none";
 	//var cartlink = "/cart?userid=" + localStorage.userid;
-	document.getElementById("userid").setAttribute("value", localStorage.userid)
+	if (localStorage.userid === undefined) {
+		document.getElementById("userid").setAttribute("value", -1)
+	}else {
+		document.getElementById("userid").setAttribute("value", localStorage.userid)
+	}
 	document.getElementById("tocart").setAttribute("href", "/cart?userid="+ localStorage.userid)
 	function buyProduct () {
 	    var x = document.getElementById('buyform');

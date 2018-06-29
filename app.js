@@ -61,13 +61,17 @@ app.use('/editproducts?', admin.editproducts)
 app.use('/addproduct', products.addproduct)
 app.use('/deleteproduct', admin.deleteproduct)
 app.post('/add', upload.single('imagefile'), products.add)
-/*app.post('/add', upload.single('imagefile'), function(req, res){
-	console.log(req.imagefile)
-  res.redirect('/admin')
-})*/
+app.use('/users', admin.userlist)
+app.use('/edituser', admin.edituser)
+app.use('/deleteuser', admin.deleteuser)
+app.use('/createuser', admin.createuser)
 
+app.post('/createduser', admin.createduser)
+app.post('/editeduser', admin.editeduser)
+app.post('/deleteduser', admin.deleteduser)
 app.post('/edit', products.edit)
 app.post('/delete?', products.delete)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
